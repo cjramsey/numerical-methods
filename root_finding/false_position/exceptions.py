@@ -1,2 +1,0 @@
-class PreconditionError(Exception):
-    pass

@@ -1,6 +1,6 @@
 from typing import Callable
 
-from exceptions import PreconditionError
+from root_finding.exceptions import PreconditionError
 
 def false_position(f: Callable[[float], float], a: float, 
                    b: float, tol: float=1e-8, max_iter: int=100) -> list:
@@ -38,11 +38,10 @@ def false_position(f: Callable[[float], float], a: float,
 
     # Iterate until method is converged or iterations exceed max_iter
     while (iterations <= max_iter):
-
         p = (a * f(b) - b * f(a)) / (f(b) - f(a))
         Pn.append(p)
 
-        if abs(Pn[-1] - Pn[-2] < tol):
+        if abs(Pn[-1] - Pn[-2]) < tol:
             # Return array to allow for Aitken's delta-squared process (Exponential extrapolation)
             return Pn
 
@@ -56,3 +55,7 @@ def false_position(f: Callable[[float], float], a: float,
     
     if iterations > max_iter:
         raise RuntimeError(f"Method failed to converge within max_iter={max_iter} iterations.")
+
+
+if __name__ == "__main__":
+    print(false_position(lambda x: x**2 - 2, 1, 2))

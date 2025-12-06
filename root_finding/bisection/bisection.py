@@ -1,6 +1,6 @@
 from typing import Callable
 
-from exceptions import PreconditionError
+from root_finding.exceptions import PreconditionError
 
 def bisection(f: Callable[[float], float], a: float, b: float, 
               tol: float=1e-8, max_iter: int=100) -> float:
