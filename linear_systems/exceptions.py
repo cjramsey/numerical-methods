@@ -3,3 +3,6 @@ class DimensionError(Exception):
 
 class NoUniqueSolutionError(Exception):
     pass
+
+class ImpossibleFactorizationError(Exception):
+    pass
